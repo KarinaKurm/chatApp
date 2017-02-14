@@ -4,7 +4,7 @@
 </head>
 
 <body>
-   
+
  </body>
 
 
@@ -31,7 +31,7 @@
 </template>
 
 <template name= "profileSetUp">
-  
+
   <h1>Lets set up your profile</h1>
 
   <h2>Login</h2>
@@ -44,9 +44,9 @@
 </template>
 
 <template name="navigation">
-<ul>
-       
-       <li><a href="/">Home</a></li> 
+  <ul>
+
+       <li><a href="/">Home</a></li>
     {{#if currentUser}}
       <li><a href="{{pathFor route='chatPage'}}">Chat Page</a></li>
         <li><a href="#" class="logout">Logout</a></li>
@@ -76,16 +76,56 @@
     </form>
 </template>
 
+<!-- <template name="showList">
+    <h2>Room list</h2>
+    <form class="new-country">
+    <div class="input-group">
+      <input type="text" name="text" class="form-control" placeholder="Enter Country" />
+      <span class="input-group-btn">
+        <button class="btn btn-info send" type="submit">SEND</button>
+      </span>
+    </div>
+  </form>
+  <!- {{#each getRoomname}}
+  test
+  {{/each}} -->
 
+<!--
+</template> -->
+
+<template name = "showRooms">
+<h2>Room list</h2>
+  <ul>
+      {{#each room}}
+          <li>{{>roomItem}}</li>
+      {{/each}}
+      </ul>
+      {{>addRoom}}
+</template>
+
+<template name="roomItem">
+    <li>{{name}}
+    [<a href="#" class="delete-room">Delete</a>]
+    </li>
+</template>
+
+<template name="addRoom">
+    <form>
+        Create a room:
+        <input type="text" placeholder="Type a name here..." name="roomName">
+    </form>
+</template>
 
  <template name="chat">
-  
+
     <div class="container">
      <div class="row">
-       <h3 class="text-center" >SIMPLE METEOR CHAT</h3>
-      <h5 class="text-center text-muted">Sign in to join!</h5>
-       <div class="col-md-12">
-    
+       <div class = "col-md-4">
+        {{>showRooms}}
+       </div>
+       <div class="col-md-8">
+         <h3 class="text-center" >SIMPLE METEOR CHAT</h3>
+         <h5 class="text-center text-muted">Sign in to join!</h5>
          <div class="panel panel-info">
            <div class="panel-heading">
              GROUP CHAT
@@ -115,7 +155,8 @@
            {{/if}}
          </div>
        </div>
+
      </div>
+
    </div>
 </template>
-

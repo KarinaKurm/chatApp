@@ -1,9 +1,10 @@
-
 import './main.html';
-
 import { Template } from 'meteor/templating';
 import '../imports/ui/message.js';
- import { Messages } from '../imports/api/messages.js';
+import { Messages } from '../imports/api/messages.js';
+import { OCADrooms } from '../imports/api/rooms.js';
+
+
 
 Router.route('/register', function () {
   this.render('register');
@@ -20,7 +21,6 @@ Router.route('/', function () {
   this.render('home');
 });
 
-
 Router.route('/profileSetUp', function () {
   this.render('profileSetUp');
 });
@@ -28,8 +28,6 @@ Router.route('/profileSetUp', function () {
 Router.configure({
     layoutTemplate: 'main'
 });
-
-
 
 Template.register.events({
     'submit form': function(event){
@@ -70,9 +68,8 @@ Template.login.events({
             } else {
                 Router.go("/chatPage");
             }
-      });
+            });
         }
- 
 });
 
 Template.profileSetUp.events({
@@ -80,12 +77,12 @@ Template.profileSetUp.events({
         event.preventDefault();
         var homecounty = $('[name=homecounty]').val();
         var language = $('[name=language]').val();
-      
+
         console.log(homecounty);
          console.log(language);
-        
+
         }
- 
+
 });
 
  Template.chat.helpers({
@@ -93,6 +90,7 @@ Template.profileSetUp.events({
      return Messages.find();
    },
  });
+
 
   Template.chat.events({
    'submit .new-message'(event) {
@@ -114,3 +112,52 @@ Template.profileSetUp.events({
 	},
  });
 
+ Template.showRooms.helpers({
+     'room': function(){
+         return OCADrooms.find({}, {sort: {createdAt: -1}});
+     }
+ });
+ Template.addRoom.events({
+   'submit form': function(event){
+      event.preventDefault();
+      var roomName = $('[name="roomName"]').val();
+      OCADrooms.insert({
+          name: roomName,
+          createdAt: new Date()
+          // CreatedBy: Meteor.userId(), username:Meteor.user().username,
+      });
+       $('[name="roomName"]').val('');
+    }
+ });
+ Template.roomItem.events({
+       'click .delete-room': function(event){
+      event.preventDefault();
+      var documentId = this._id;
+      var confirm = window.confirm("Delete this task?");
+      if(confirm){
+          OCADrooms.remove({ _id: documentId });
+      }
+    }
+ });
+
+//  Template.showList.events({
+//   'submit .new-country'(event) {
+//     event.preventDefault();
+//     console.log("You clicked something");
+//
+//     OCADroomList.insert({
+//       roomnamename: text,
+//       createdAt: new Date(), // current time
+//      CreatedBy: Meteor.userId(), username:Meteor.user().username,
+//     });
+//     Console.log("Inserted");
+//   },
+// });
+//
+//  Template.showList.helpers({
+//     getRoomname(){
+//      return "Some other text";
+//      return OCADroomList.find().fetch();
+//
+//    },
+//  });
