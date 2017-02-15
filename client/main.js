@@ -1,10 +1,10 @@
-
 import './main.html';
-
 import { Template } from 'meteor/templating';
 import '../imports/ui/message.js';
- import { Messages } from '../imports/api/messages.js';
- import { OCADrooms } from '../imports/api/rooms.js';
+import { Messages } from '../imports/lib/messages.js';
+import { OCADrooms } from '../imports/lib/rooms.js';
+
+Session.setDefault("roomname", "Default");
 
 Router.route('/register', function () {
   this.render('register');
@@ -30,14 +30,14 @@ Router.configure({
     layoutTemplate: 'main'
 });
 
-
-
 Template.register.events({
     'submit form': function(event){
         event.preventDefault();
+        var username = $('[name=username]').val();
         var email = $('[name=email]').val();
         var password = $('[name=password]').val();
         Accounts.createUser({
+          username: username,
           email: email,
           password: password
       }, function(error){
@@ -91,8 +91,11 @@ Template.profileSetUp.events({
 
  Template.chat.helpers({
    messages() {
-     return Messages.find();
+     return Messages.find({room: Session.get("roomname")}, {sort: {ts: -1}});
    },
+   roomname: function() {
+      return Session.get("roomname");
+    }
  });
 
   Template.chat.events({
@@ -106,7 +109,8 @@ Template.profileSetUp.events({
      Messages.insert({
        text,
        createdAt: new Date(), // current time
- 	   owner: Meteor.userId(), username:Meteor.user().username,
+ 	     owner: Meteor.userId(), username:Meteor.user().username,
+       room: Session.get("roomname")
      });
      // Clear form
      target.text.value = '';
@@ -120,25 +124,38 @@ Template.profileSetUp.events({
          return OCADrooms.find({}, {sort: {createdAt: -1}});
      }
  });
+ Template.showRooms.events({
+    'click li': function(e) {
+      Session.set("roomname", e.target.innerText);
+    }
+  });
+
  Template.addRoom.events({
    'submit form': function(event){
       event.preventDefault();
-      var roomName = $('[name="roomName"]').val();
+      var room = $('[roomname="room"]').val();
       OCADrooms.insert({
-          name: roomName,
+          roomname: room,
           createdAt: new Date()
-          // CreatedBy: Meteor.userId(), username:Meteor.user().username,
+          //CreatedBy: Meteor.userId(), username:Meteor.user().username,
       });
-       $('[name="roomName"]').val('');
+
+       $('[roomname="room"]').val('');
     }
  });
  Template.roomItem.events({
        'click .delete-room': function(event){
-      event.preventDefault();
-      var documentId = this._id;
-      var confirm = window.confirm("Delete this task?");
-      if(confirm){
-          OCADrooms.remove({ _id: documentId });
-      }
-    }
+          event.preventDefault();
+          var documentId = this._id;
+          var confirm = window.confirm("Delete this task?");
+          if(confirm){
+              OCADrooms.remove({ _id: documentId });
+          }
+        }
  });
+
+ Template.roomItem.helpers({
+  roomstyle: function() {
+      return Session.equals("roomname", this.roomname) ? "font-weight: bold" : "";
+    }
+});
