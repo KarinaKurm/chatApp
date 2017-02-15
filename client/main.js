@@ -4,6 +4,7 @@ import './main.html';
 import { Template } from 'meteor/templating';
 import '../imports/ui/message.js';
  import { Messages } from '../imports/api/messages.js';
+ import { OCADrooms } from '../imports/api/rooms.js';
 
 Router.route('/register', function () {
   this.render('register');
@@ -72,7 +73,7 @@ Template.login.events({
             }
       });
         }
- 
+
 });
 
 Template.profileSetUp.events({
@@ -80,12 +81,12 @@ Template.profileSetUp.events({
         event.preventDefault();
         var homecounty = $('[name=homecounty]').val();
         var language = $('[name=language]').val();
-      
+
         console.log(homecounty);
          console.log(language);
-        
+
         }
- 
+
 });
 
  Template.chat.helpers({
@@ -114,3 +115,30 @@ Template.profileSetUp.events({
 	},
  });
 
+ Template.showRooms.helpers({
+     'room': function(){
+         return OCADrooms.find({}, {sort: {createdAt: -1}});
+     }
+ });
+ Template.addRoom.events({
+   'submit form': function(event){
+      event.preventDefault();
+      var roomName = $('[name="roomName"]').val();
+      OCADrooms.insert({
+          name: roomName,
+          createdAt: new Date()
+          // CreatedBy: Meteor.userId(), username:Meteor.user().username,
+      });
+       $('[name="roomName"]').val('');
+    }
+ });
+ Template.roomItem.events({
+       'click .delete-room': function(event){
+      event.preventDefault();
+      var documentId = this._id;
+      var confirm = window.confirm("Delete this task?");
+      if(confirm){
+          OCADrooms.remove({ _id: documentId });
+      }
+    }
+ });
