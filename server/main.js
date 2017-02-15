@@ -1,7 +1,54 @@
 import { Meteor } from 'meteor/meteor';
-import '../imports/api/messages.js';
-import '../imports/api/rooms.js';
+import { Messages } from '../imports/api/messages.js';
+import { Rooms } from '../imports/api/rooms.js';
 
-Meteor.startup(() => {
-  // code to run on server at startup
+Meteor.startup(function () {
+  Messages.remove({});
+  Rooms.remove({});
+  if (Rooms.find().count() === 0) {
+    ["Meteor", "JavaScript", "Reactive", "MongoDB"].forEach(function(r) {
+      Rooms.insert({roomname: r});
+    });
+  }
+});
+
+Rooms.deny({
+  insert: function (userId, doc) {
+    return true;
+  },
+  update: function (userId, doc, fieldNames, modifier) {
+    return true;
+  },
+  remove: function (userId, doc) {
+    return true;
+  }
+});
+Messages.deny({
+  insert: function (userId, doc) {
+    return (userId === null);
+  },
+  update: function (userId, doc, fieldNames, modifier) {
+    return true;
+  },
+  remove: function (userId, doc) {
+    return true;
+  }
+});
+Messages.allow({
+  insert: function (userId, doc) {
+    return (userId !== null);
+  }
+});
+
+Rooms.allow({
+  insert: function (userId, doc) {
+    return (userId !== null);
+  }
+});
+
+Meteor.publish("rooms", function () {
+  return Rooms.find();
+});
+Meteor.publish("messages", function () {
+  return Messages.find({}, {sort: {ts: -1}});
 });

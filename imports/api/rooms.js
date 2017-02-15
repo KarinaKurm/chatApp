@@ -3,4 +3,4 @@ import { Mongo } from 'meteor/mongo';
 //
 // // var OCADroomList = var db= mongo.collection('rooms');
 //
-export const OCADrooms = new Mongo.Collection('OCADrooms');
+export const Rooms = new Mongo.Collection('rooms');
