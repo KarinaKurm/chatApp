@@ -109,13 +109,15 @@ Template.profileSetUp.events({
      Messages.insert({
        text,
        createdAt: new Date(), // current time
- 	     owner: Meteor.userId(), username:Meteor.user().username,
+ 	     owner: Meteor.user(),
+       username:Meteor.user().username,
        room: Session.get("roomname")
      });
      // Clear form
      target.text.value = '';
      // scroll to last message
      $('.panel-body').scrollTop($('.media-list').height())
+     console.log(Meteor.user().emails[0].address);
 	},
  });
 
@@ -133,14 +135,14 @@ Template.profileSetUp.events({
  Template.addRoom.events({
    'submit form': function(event){
       event.preventDefault();
-      var room = $('[roomname="room"]').val();
+      var room = event.target.roomname.value;
+      console.log(room);
       OCADrooms.insert({
           roomname: room,
           createdAt: new Date()
           //CreatedBy: Meteor.userId(), username:Meteor.user().username,
       });
-
-       $('[roomname="room"]').val('');
+      event.target.roomname.value = '';
     }
  });
  Template.roomItem.events({
