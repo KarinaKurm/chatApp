@@ -1,8 +1,16 @@
 import './main.html';
 import { Template } from 'meteor/templating';
+
 import '../imports/ui/message.js';
+import '../imports/ui/message.html';
+
 import { Messages } from '../imports/lib/messages.js';
 import { OCADrooms } from '../imports/lib/rooms.js';
+
+
+
+import '../imports/ui/chat.html';
+import '../imports/ui/chat.css';
 
 Session.setDefault("roomname", "Default");
 
