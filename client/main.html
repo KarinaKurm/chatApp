@@ -32,15 +32,22 @@
 
 <template name= "profileSetUp">
 
-  <h1>Lets set up your profile</h1>
 
-  <h2>Login</h2>
-    <form class="login">
-        <p>Homecounty: <input type="homecounty" name="homecounty"></p>
-        <p>Language: <input type="language" name="language"></p>
-        <p><input type="submit" value="Login"></p>
-    </form>
 
+
+        <div class="signin-body">
+          <div class="signin-page">
+            <h1>Lets set up your profile</h1>
+          <div class="signin-form">
+            <form class="login-form">
+              <input type="homecounty" name="homecounty" placeholder="homecounty"/>
+              <input type="language" name="language" placeholder="language"/>
+              <button type="submit" value="Login">Save</button>
+              <p class="message-signin"> Want to do it later? <a href="{{pathFor route='chatPage'}}">Skip</a></p>
+            </form>
+          </div>
+        </div>
+      </div>
 </template>
 
 <template name="navigation">
@@ -94,36 +101,35 @@
 </template>
 
 <template name="login">
-        <div class="container">
-            <div class="row">
-                <div class="col-mg-6 text-center">
-                        <h2 >Login</h2>
-                        <form class="login">
-                            <p>Email: <input type="email" name="email"></p>
-                            <p>Password: <input type="password" name="password"></p>
-                            <p><input type="submit" value="Login" class="btn btn-success btn-lg"></p>
-                        </form>
-                </div>
-            </div>
-        </div>
+
+    <div class="signin-body">
+      <div class="signin-page">
+      <div class="signin-form">
+        <form class="login-form">
+          <input type="email" name="email" placeholder="email"/>
+          <input type="password" name="password" placeholder="password"/>
+          <button type="submit" value="Login" >login</button>
+          <p class="message-signin">Already registered? <a href="{{pathFor route='register'}}">Create an account</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
 </template>
 
 <template name="register">
-
-  <div class="container">
-        <div class="row">
-            <div class="col-md-6 text-center">
-                    <h2 >Register</h2>
-                    <form>
-                  <p>Username: <input type="username" name="username"></p>
-                    <p>Email: <input type="email" name="email"></p>
-                    <p>Password: <input type="password" name="password"></p>
-                    <p><input type="submit" value="Register" class="btn btn-success btn-lg"></p>
-                  </form>
-              </div>
+        <div class="signin-body">
+          <div class="signin-page">
+          <div class="signin-form">
+            <form class="register-form">
+              <input type="username" name="username" placeholder="username"/>
+              <input type="email" name="email" placeholder="email"/>
+              <input type="password" name="password" placeholder="password"/>
+              <button type="submit" value="Register" >Create</button>
+              <p class="message-signin">Already registered? <a href="{{pathFor route='login'}}">Login</a></p>
+            </form>
           </div>
         </div>
-
+        </div>
 </template>
 
 
