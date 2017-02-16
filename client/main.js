@@ -110,7 +110,7 @@ Template.profileSetUp.events({
        text,
        createdAt: new Date(), // current time
  	     owner: Meteor.user(),
-       username:Meteor.user().username,
+       username:Meteor.user().emails[0].address,
        room: Session.get("roomname")
      });
      // Clear form
