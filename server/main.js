@@ -1,9 +1,12 @@
 import { Meteor } from 'meteor/meteor';
+
 import '../imports/lib/messages.js';
 import '../imports/lib/rooms.js';
 
+
 import { Messages } from '../imports/lib/messages.js';
 import { OCADrooms } from '../imports/lib/rooms.js';
+
 
 Meteor.startup(() => {
   Messages.remove({});
