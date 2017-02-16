@@ -1,4 +1,4 @@
-<template name="chat">
+<!-- <template name="chat">
 
    <div class="container">
     <div class="row">
@@ -14,13 +14,13 @@
           </div>
           <div class="panel-body">
             <ul class="media-list">
-              <!-- message template -->
+
               {{#each messages}}
                 {{> message}}
               {{/each}}
             </ul>
           </div>
-          <!-- message textbox -->
+
           {{#if currentUser}}
 
           <form class="new-message">
@@ -40,5 +40,48 @@
 
     </div>
 
+  </div>
+</template> -->
+
+<template name="chat">
+  <div class="container">
+   <div class="row">
+     <div class = "col-md-4">
+      {{>showRooms}}
+     </div>
+     <div class="col-md-8">
+      <div class="chat_window">
+      <div class="top_menu">
+        <div class="buttons">
+          <div class="button close">
+          </div><div class="button minimize"></div>
+          <div class="button maximize">
+          </div>
+        </div>
+        <div class="title">{{roomname}}</div>
+      </div>
+      <ul class="messages_container">
+        {{#each messages}}
+          {{> message}}
+        {{/each}}
+
+      </ul>
+      {{#if currentUser}}
+      <div class="bottom_wrapper clearfix">
+          <form class="new-message">
+          <div class="message_input_wrapper">
+              <input type="text" name="text" class="message_input" placeholder="Type your message here..." />
+            </div>
+            <div class="send_message">
+              <div class="icon"></div>
+              <button type="submit" class="text">Send</button>
+              <!-- <div type="submit" class="text">Send</b> -->
+            </div>
+        </form>
+      </div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
   </div>
 </template>

@@ -1,4 +1,4 @@
-
+<!--
 <template name="message">
   <li class="media">
     <div class="media-body">
@@ -15,4 +15,20 @@
       </div>
     </div>
   </li>
+</template> -->
+
+<template name="message">
+  <div class="message_template">
+    <li class="message_item">
+      <div class="avatar"></div>
+      <div class="text_wrapper">
+        <div class="text">
+          {{text}}
+        </div>
+
+        <small class="text-muted"><strong>{{username}}</strong> | {{createdAt}}</small>
+        
+        </div>
+    </li>
+  </div>
 </template>
