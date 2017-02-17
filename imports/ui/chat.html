@@ -1,4 +1,4 @@
-<!-- <template name="chat">
+<template name="chat">
 
    <div class="container">
     <div class="row">
@@ -6,49 +6,63 @@
        {{>showRooms}}
       </div>
       <div class="col-md-8">
-        <h3 class="text-center" >SIMPLE METEOR CHAT</h3>
-        <h5 class="text-center text-muted">Sign in to join!</h5>
+        <div class="chat_window">
+
         <div class="panel panel-info">
-          <div class="panel-heading">
-            <h4>Room: {{roomname}}</h4>
+
+          <div class="top_menu">
+            <div class="buttons">
+              <div class="button close">
+              </div><div class="button minimize"></div>
+              <div class="button maximize">
+              </div>
+            </div>
+            <div class="title">{{roomname}}</div>
           </div>
+
           <div class="panel-body">
             <ul class="media-list">
 
-              {{#each messages}}
-                {{> message}}
-              {{/each}}
+                {{#each messages}}
+                  {{> message}}
+                {{/each}}
+
+
+
             </ul>
           </div>
 
           {{#if currentUser}}
+          <div class="bottom_wrapper clearfix">
+              <form class="new-message">
+              <div class="message_input_wrapper">
+                  <input type="text" name="text" class="message_input" placeholder="Type your message here..." />
+                </div>
+                <div class="send_message">
+                  <div class="icon"></div>
+                  <button type="submit" class="text">Send</button>
 
-          <form class="new-message">
-            <div class="panel-footer">
-              <div class="input-group">
-                <input type="text" name="text" class="form-control" placeholder="Enter Message" />
-                <span class="input-group-btn">
-                  <button class="btn btn-info send" type="submit">SEND</button>
-                </span>
-              </div>
-            </div>
-          </form>
+                </div>
+            </form>
+          </div>
 
           {{/if}}
         </div>
       </div>
 
     </div>
+  </div>
 
   </div>
-</template> -->
 
-<template name="chat">
+</template>
+
+<!-- <template name="chat">
   <div class="container">
    <div class="row">
-     <div class = "col-md-4">
+
       {{>showRooms}}
-     </div>
+
      <div class="col-md-8">
       <div class="chat_window">
       <div class="top_menu">
@@ -75,7 +89,7 @@
             <div class="send_message">
               <div class="icon"></div>
               <button type="submit" class="text">Send</button>
-              <!-- <div type="submit" class="text">Send</b> -->
+
             </div>
         </form>
       </div>
@@ -84,4 +98,4 @@
     </div>
   </div>
   </div>
-</template>
+</template> -->
