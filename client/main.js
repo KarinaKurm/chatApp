@@ -25,8 +25,8 @@ Router.route('/chatPage', function () {
 });
 
 Router.route('/', function () {
-	name: 'home',
-  this.render('home');
+	name: 'register',
+  this.render('register');
 });
 
 
@@ -92,7 +92,7 @@ Template.profileSetUp.events({
 
         console.log(homecounty);
          console.log(language);
-
+         Router.go("/chatPage");
         }
 
 });
