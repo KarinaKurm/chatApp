@@ -12,7 +12,7 @@ import { OCADrooms } from '../imports/lib/rooms.js';
 import '../imports/ui/chat.html';
 import '../imports/ui/chat.css';
 
-Session.setDefault("roomname", "Default");
+Session.setDefault("roomname", "Kazakhstan");
 
 Router.route('/register', function () {
   this.render('register');
@@ -132,12 +132,19 @@ Template.profileSetUp.events({
  Template.showRooms.helpers({
      'room': function(){
          return OCADrooms.find({}, {sort: {createdAt: -1}});
-     }
+     },
+    //  'numRooms': function(){
+    //    return OCADrooms.find(),count();
+    //    console.log(numRooms);
+    //  }
  });
  Template.showRooms.events({
-    'click li': function(e) {
+    'click button': function(e) {
       Session.set("roomname", e.target.innerText);
+
     }
+
+
   });
 
  Template.addRoom.events({

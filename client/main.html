@@ -12,9 +12,11 @@
 <template name="main">
     <!-- <h1>Int'l Student App</h1> -->
     {{> navigation}}
+
      {{> yield}}
-    <hr />
-    <p>Copyright &copy; Karina Kurmanbayeva, 2017.</p>
+
+    <!-- <hr />
+    <p>Copyright &copy; Karina Kurmanbayeva, 2017.</p> -->
 </template>
 
 <template name="home">
@@ -101,7 +103,9 @@
 
     <div class="signin-body">
       <div class="signin-page">
+
       <div class="signin-form">
+          <h3>Login</h3>
         <form class="login-form">
           <input type="email" name="email" placeholder="email"/>
           <input type="password" name="password" placeholder="password"/>
@@ -116,7 +120,9 @@
 <template name="register">
         <div class="signin-body">
           <div class="signin-page">
+
           <div class="signin-form">
+              <h3>Register</h3>
             <form class="register-form">
               <input type="username" name="username" placeholder="username"/>
               <input type="email" name="email" placeholder="email"/>
@@ -130,26 +136,50 @@
 </template>
 
 
-<template name = "showRooms">
-<h2>OCAD Roomlist</h2>
-  <ul>
+<!-- <template name = "showRooms">
+  <div class = "col-md-4">
+    <div class = "rooms_side">
+  <h4 >OCADU Rooms <span>(7)</span></h4>
+    <ul>
       {{#each room}}
-          <li>{{>roomItem}}</li>
+      <li class="room_item">{{>roomItem}}</li>
       {{/each}}
-      </ul>
+    </ul>
       {{>addRoom}}
+    </div>
+    </div>
+</template> -->
+
+<template name = "showRooms">
+  <div class = "col-md-4">
+    <div class = "rooms_side">
+        <h4>OCADU Rooms <span>(5)</span></h4>
+      <div class="list-group">
+        {{#each room}}
+      {{>roomItem}}
+        {{/each}}
+
+      </div>
+
+
+      {{>addRoom}}
+    </div>
+    </div>
 </template>
 
-
 <template name="roomItem">
-    <li style="cursor: pointer; {{roomstyle}}"><h5>{{roomname}}</h5>
-  </li>
-  <a href="#" class="delete-room">Delete</a>
+  <button class="list-group-item list-group-item-action" style="cursor: pointer">{{roomname}}</button>
+
+   <!-- <a href="#" class="delete-room">Delete</a> -->
 </template>
 
 <template name="addRoom">
-    <form>
-        Create a room:
-        <input type="text" placeholder="Type a name here..." name="roomname">
+  <form class="new-room">
+    <div class="form-group">
+        <h4>Create a Room</h4>
+        <input name="roomname" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter a name">
+        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+      </div>
+
     </form>
 </template>
