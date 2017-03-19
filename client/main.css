@@ -6,7 +6,8 @@ body{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.panel-body{
+
+#chat.panel-body {
    overflow-y:scroll;
    height:60vh;
  }/* CSS declarations go here */

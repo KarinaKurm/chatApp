@@ -6,11 +6,15 @@ import '../imports/ui/message.html';
 
 import { Messages } from '../imports/lib/messages.js';
 import { OCADrooms } from '../imports/lib/rooms.js';
-
-
+import { OCADtopics } from '../imports/lib/topics.js';
+import { Posts } from '../imports/lib/posts.js';
 
 import '../imports/ui/chat.html';
 import '../imports/ui/chat.css';
+
+import '../imports/ui/homeFeed.js';
+import '../imports/ui/homeFeed.html';
+import '../imports/ui/homeFeed.css';
 
 Session.setDefault("roomname", "Kazakhstan");
 
@@ -25,8 +29,8 @@ Router.route('/chatPage', function () {
 });
 
 Router.route('/', function () {
-	name: 'register',
-  this.render('register');
+	name: 'home',
+  this.render('home');
 });
 
 
@@ -172,6 +176,7 @@ Template.profileSetUp.events({
  });
 
  Template.roomItem.helpers({
+
   roomstyle: function() {
       return Session.equals("roomname", this.roomname) ? "font-weight: bold" : "";
     }

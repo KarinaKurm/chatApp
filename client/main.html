@@ -20,7 +20,8 @@
 </template>
 
 <template name="home">
-  <h1>This is the home page</h1>
+  <!-- <h1>This is the home page</h1> -->
+  {{> homeFeed}}
 </template>
 
 <template name="chatPage">
@@ -65,17 +66,18 @@
                           <a href="#page-top"></a>
                       </li>
 
-                      <li class="page-scroll">
-                        <a href="/">Home</a>
-                      </li>
-                      <li class="page-scroll">
+
+                      <!-- <li class="page-scroll">
                           <a href="#about">About</a>
                       </li>
                       <li class="page-scroll">
                           <a href="#contact">Contact</a>
-                      </li>
+                      </li> -->
 
                       {{#if currentUser}}
+                      <li class="page-scroll">
+                        <a href="/">Home</a>
+                      </li>
                      <li class="page-scroll">
                        <a href="{{pathFor route='chatPage'}}">Chat Page</a>
                      </li>

@@ -1,0 +1,109 @@
+<template name ="homeFeed">
+
+
+
+
+      {{> showTopics}}
+
+
+        {{> writeaPost}}
+
+<div class="title">{{roomname}}</div>
+        <div class="panel-body">
+
+                <ul class="posts-list">
+                      {{#each posts}}
+                        {{> post}}
+                      {{/each}}
+                </ul>
+          </div>
+
+
+</template>
+
+<template name ="writeaPost">
+  <div class="row row-centered">
+  <div class="col-xs-6 col-centered col-min">
+  <div class="well">
+    <form class="new-post" role="form">
+     <h4>Share something</h4>
+      <div class="form-group" style="padding:14px;">
+       <textarea type="text" class="form-control" name="text" placeholder="Update your status"></textarea>
+     </div>
+     <div class="selectTopics">
+
+         {{#each topic}}
+           <a href="#"><span class="badge">{{topicname}}</span></a>
+         {{/each}}
+
+       </div>
+     <div class="send_post">
+
+       <button type="submit" class="btn btn-primary">Post</button>
+<!-- <button type="submit" class="text">Post</button> -->
+     </div>
+
+   </form>
+  </div>
+</div>
+</div>
+
+</template>
+
+
+
+
+
+<template name="post">
+
+  <div class="row row-centered">
+    <div class="col-xs-6 col-centered col-min">
+      <div class="panel panel-default">
+          <div class="panel-heading">
+              <small class="text-muted"><strong>{{username}}</strong> | {{createdAt}}</small>
+          </div>
+          <div class="panel-body">
+              {{text}}
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+
+<template name = "showTopics">
+<!--
+    <div class="container" id="topics-row">
+    <div class="row row-centered">
+        <h3> Featured Topics </h3>
+
+              {{#each topic}}
+            {{>topicItem}}
+              {{/each}}
+      </div>
+    </div> -->
+    <div class="row">
+    <div class = "col-xs-1">
+      <div class = "rooms_side">
+          <h4>OCADU Rooms <span>(5)</span></h4>
+        <div class="list-group">
+          {{#each topic}}
+        {{>topicItem}}
+          {{/each}}
+
+        </div>
+
+
+      </div>
+      </div>
+    </div>
+
+</template>
+
+<template name="topicItem">
+<!--
+  <div class="col-md-3 col-md-push-1" id="topic"> -->
+
+      <button class="list-group-item list-group-item-action" style="cursor: pointer">{{topicname}}</button>
+      <!-- </div> -->
+</template>
