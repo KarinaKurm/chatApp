@@ -6,8 +6,9 @@ import '../imports/ui/message.html';
 
 import { Messages } from '../imports/lib/messages.js';
 import { OCADrooms } from '../imports/lib/rooms.js';
-import { Posts } from '../imports/lib/posts.js';
 
+import { Posts } from '../imports/lib/posts.js';
+import { OCADtopics } from '../imports/lib/topics.js';
 
 import '../imports/ui/chat.html';
 import '../imports/ui/chat.css';
@@ -59,7 +60,7 @@ Template.register.events({
         var email = $('[name=email]').val();
         var password = $('[name=password]').val();
         Accounts.createUser({
-          username: username,
+          // username: username,
           email: email,
           password: password
       }, function(error){
@@ -72,6 +73,24 @@ Template.register.events({
           }
 });
 
+Template.profileSetUp.events({
+    'submit form': function(event){
+        event.preventDefault();
+        var homecounty = $('[name=homecounty]').val();
+        var language = $('[name=language]').val();
+
+        Meteor.users.update({_id: this.userId}, {
+          $set: {
+            "homecounty": homecounty,
+            "language": language,
+          }});
+
+        console.log(homecounty);
+         console.log(language);
+         Router.go("/chatPage");
+        }
+
+});
 Template.navigation.events({
     'click .logout': function(event){
         event.preventDefault();
@@ -98,18 +117,7 @@ Template.login.events({
 
 });
 
-Template.profileSetUp.events({
-    'submit form': function(event){
-        event.preventDefault();
-        var homecounty = $('[name=homecounty]').val();
-        var language = $('[name=language]').val();
 
-        console.log(homecounty);
-         console.log(language);
-         Router.go("/chatPage");
-        }
-
-});
 
  Template.chat.helpers({
    messages() {

@@ -31,23 +31,7 @@
 {{/if}}
 </template>
 
-<template name= "profileSetUp">
 
-        <div class="signin-body">
-          <div class="signin-page">
-
-          <div class="signin-form">
-            <h3>Lets set up your profile</h3>
-            <form class="login-form">
-              <input type="homecounty" name="homecounty" placeholder="homecounty"/>
-              <input type="language" name="language" placeholder="language"/>
-              <button type="submit" value="Login">Save</button>
-              <p class="message-signin"> Want to do it later? <a href="{{pathFor route='chatPage'}}">Skip</a></p>
-            </form>
-          </div>
-        </div>
-      </div>
-</template>
 
 <template name="navigation">
 
@@ -118,7 +102,7 @@
           <div class="signin-form">
               <h3>Register</h3>
             <form class="register-form">
-              <input type="username" name="username" placeholder="username"/>
+              <!-- <input type="username" name="username" placeholder="username"/> -->
               <input type="email" name="email" placeholder="email"/>
               <input type="password" name="password" placeholder="password"/>
               <button type="submit" value="Register" >Create</button>
@@ -127,6 +111,24 @@
           </div>
         </div>
         </div>
+</template>
+
+<template name= "profileSetUp">
+
+        <div class="signin-body">
+          <div class="signin-page">
+
+          <div class="signin-form">
+            <h3>Lets set up your profile</h3>
+            <form class="profileSetUp-form-form">
+              <input type="homecounty" name="homecounty" placeholder="homecounty"/>
+              <input type="language" name="language" placeholder="language"/>
+              <button type="submit" value="profileSetUp-form">Save</button>
+              <p class="message-signin"> Want to do it later? <a href="{{pathFor route='chatPage'}}">Skip</a></p>
+            </form>
+          </div>
+        </div>
+      </div>
 </template>
 
 

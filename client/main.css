@@ -1,12 +1,19 @@
 
  /*@import url(https://fonts.googleapis.com/css?family=Roboto:300);*/
+
+.row{
+  margin-right: 0px;
+  margin-left: 0px;
+  margin-bottom : 0px;
+}
+
 body{
   background-color: #ffffff;
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.panel-body{
+.panel-body.chat{
    overflow-y:scroll;
    height:60vh;
  }/* CSS declarations go here */

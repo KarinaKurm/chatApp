@@ -1,4 +1,61 @@
 <Template name = "general">
+<h3> {{topicname}}</h3>
   {{>writePost}}
-  {{>post}}
+
+  {{#each posts}}
+    {{> post}}
+  {{/each}}
+
 </Template>
+
+<template name = "writePost">
+  <div class="row">
+    <div class="col-md-6 col-centered">
+    						<div class="widget-area no-padding blank">
+								<div class="status-upload">
+									<form class="new-post">
+										<textarea type="text" class="form-control" name="text" placeholder="What are you doing right now?" ></textarea>
+
+										<ul>
+											<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><i class="fa fa-music"></i></a></li>
+											<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Video"><i class="fa fa-video-camera"></i></a></li>
+											<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Sound Record"><i class="fa fa-microphone"></i></a></li>
+											<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="fa fa-picture-o"></i></a></li>
+										</ul>
+										<button type="submit" class="btn btn-primary"><i class="fa fa-share"></i> Share</button>
+									</form>
+								</div>
+							</div>
+						</div>
+
+    </div>
+
+    <!-- <div class="row row-centered">
+  <div class="col-xs-6 col-centered col-min">
+  <div class="well">
+    <form class="new-post" role="form">
+     <h4>Share something</h4>
+      <div class="form-group" style="">
+       <textarea type="text" class="form-control" name="text" placeholder="Update your status"></textarea>
+     </div>
+     <div class="selectTopics">
+       <h4> Select Topic(s): </h4>
+         {{#each topic}}
+
+           <a class="topic-button" href="#" role="button">{{topicname}}</a>
+         {{/each}}
+
+       </div>
+
+     <div class="send_post">
+
+       <button type="submit" class="btn btn-primary">Post</button>
+
+     </div>
+
+   </form>
+  </div>
+</div>
+</div>
+-->
+</template>
