@@ -15,6 +15,8 @@ import { OCADtopics } from '../imports/lib/topics.js';
 Meteor.startup(() => {
   // Messages.remove({});
   //     OCADrooms.remove({});
+  OCADtopics.remove({});
+
       if (OCADrooms.find().count() === 0) {
         ["Default","Kazakhstan", "Korea", "Russia", "Germany"].forEach(function(r) {
           OCADrooms.insert({roomname: r});

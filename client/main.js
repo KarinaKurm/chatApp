@@ -137,18 +137,13 @@ Template.profileSetUp.events({
      'room': function(){
          return OCADrooms.find({}, {sort: {createdAt: -1}});
      },
-    //  'numRooms': function(){
-    //    return OCADrooms.find(),count();
-    //    console.log(numRooms);
-    //  }
+
  });
  Template.showRooms.events({
     'click button': function(e) {
       Session.set("roomname", e.target.innerText);
 
     }
-
-
   });
 
  Template.addRoom.events({

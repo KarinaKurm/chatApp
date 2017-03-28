@@ -103,7 +103,17 @@ div#topics-row.row {
    color:#3B5999;
    background-color:#fff;
 }
-.badge:hover, .badge-inverse{
+/*.badge:hover, .badge-inverse{
    background-color:#3B5999;
    color:#fff;
+}*/
+
+.badge:active{
+  background-color:#3B5999;
+  color:#fff;
+}
+
+.selectTopics{
+  margin-bottom: 15px;
+  margin-top: 15px;
 }
