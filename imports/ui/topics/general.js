@@ -6,10 +6,13 @@ import '/imports/lib/posts.js';
 
 import '/client/main.js';
 
+import '../feed.js';
+
 import { Posts } from '/imports/lib/posts.js';
 import { OCADtopics } from '/imports/lib/topics.js';
 
-import { Countries } from '/imports/lib/countries.js';
+import { Comments } from '/imports/lib/comments.js';
+
 
 Session.setDefault("topicname", "General");
 
@@ -23,12 +26,11 @@ Template.general.helpers({
      return Session.get("topicname");
    },
 
-  // homecounty:function(){
-  //   return userDetails.mycounty;
-  // }
-
-
 });
+
+Template.general.events({
+
+})
 
 Template.writePost.events({
 
@@ -55,10 +57,19 @@ Template.writePost.events({
    // $('.panel-body').scrollTop($('.media-list').height())
  },
 
+
+
 });
 
 Template.writePost.helpers({
     'topic': function(){
         return OCADtopics.find({}, {sort: {createdAt: -1}});
     },
+
+    // comments: function() {
+    // return Comments.find({postId: this._id});
+    // }
+
+    // ----comment----
+
 });

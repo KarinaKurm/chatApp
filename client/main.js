@@ -10,6 +10,8 @@ import { OCADrooms } from '../imports/lib/rooms.js';
 import { Posts } from '../imports/lib/posts.js';
 import { OCADtopics } from '../imports/lib/topics.js';
 
+import { Comments } from '../imports/lib/comments.js';
+
 // import { Countries } from '../imports/lib/countries.js';
 
 import '../imports/ui/chat.html';

@@ -1,6 +1,3 @@
-
-
-
 <template name = "post">
 
   <div class="row">
@@ -14,10 +11,56 @@
                {{text}}
 
         </div>
+        {{>commentbox}}
       </div>
     </div>
+
   </div>
   </div>
 
+</template>
+
+
+<Template name = "commentbox">
+<ul>
+  {{#each comments}}
+      {{> comment}}
+    {{/each}}
+  </ul>
+  {{> commentSubmit}}
+
+</template>
+
+
+<template name="comment">
+  <li>
+    <h4>
+      <span class="author">{{username}}</span>
+      <span class="date">on {{createdAt}}</span>
+    </h4>
+    <p>{{text}}</p>
+  </li>
+</template>
+
+
+<template name="commentSubmit">
+  <!-- <form name="comment" class="comment-form">
+    <div class="control-group">
+        <div class="controls">
+            <label for="body">Comment on this post</label>
+            <textarea name="body"></textarea>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="controls">
+            <button type="submit" class="btn">Add Comment</button>
+        </div>
+    </div>
+  </form> -->
+
+  <form class="new-comment">
+    <textarea type="text" class="form-control" name="text" placeholder="What are you doing right now?" ></textarea>
+    <button type="submit" class="btn btn-primary"><i class="fa fa-share"></i> Share</button>
+  </form>
 
 </template>
