@@ -67,10 +67,18 @@ Template.register.events({
         var username = $('[name=username]').val();
         var email = $('[name=email]').val();
         var password = $('[name=password]').val();
+
+        var homecounty = $('[name=homecounty]').val();
+        var language = $('[name=language]').val();
         Accounts.createUser({
-          // username: username,
+          username: username,
           email: email,
-          password: password
+          password: password,
+          profile: {
+            homecounty: homecounty,
+            language: language,
+            },
+
       }, function(error){
           if(error){
               console.log(error.reason); // Output error if registration fails
@@ -82,15 +90,18 @@ Template.register.events({
 });
 
 Template.profileSetUp.events({
-    'submit form': function(event){
-        event.preventDefault();
-        var homecounty = $('[name=homecounty]').val();
-        var language = $('[name=language]').val();
+    // 'submit form': function(event){
+    //     event.preventDefault();
+    //     var homecounty = $('[name=homecounty]').val();
+    //     var language = $('[name=language]').val();
 
         // Meteor.users.update({_id: this.userId}, {
         //   $set: {
-        //     "homecounty": homecounty,
-        //     "language": language,
+        //     profile: {
+        //       homecounty: homecounty,
+        //       language: language,
+        //       },
+        //
         //   }});
 
         // Countries.insert({
@@ -103,11 +114,11 @@ Template.profileSetUp.events({
         //     mycounty: homecounty,
         //     mylanguage: language,
         //   };
-
-        console.log(homecounty);
-         console.log(language);
-         Router.go("/chatPage");
-        }
+        // 
+        // console.log(homecounty);
+        //  console.log(language);
+        //  Router.go("/chatPage");
+        // }
 
 });
 Template.navigation.events({

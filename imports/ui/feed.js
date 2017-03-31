@@ -25,6 +25,14 @@ Template.commentbox.helpers({
 //   }
 // });
 
+Template.post.helpers({
+
+  // homecounty:function () {
+  //   return Meteor.user().profile.homecounty;
+  //
+  // }
+});
+
 Template.commentSubmit.events({
 
   'submit .new-comment'(event) {

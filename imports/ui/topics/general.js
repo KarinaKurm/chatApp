@@ -25,7 +25,10 @@ Template.general.helpers({
   topicname: function() {
      return Session.get("topicname");
    },
-
+  //  homecounty:function () {
+  //    return Meteor.user().profile.homecounty;
+   //
+  //  }
 });
 
 Template.general.events({
@@ -47,8 +50,8 @@ Template.writePost.events({
       owner: Meteor.user(),
       username:Meteor.user().emails[0].address,
       topicname: Session.get("topicname"),
-      // homecounty:Meteor.user().homecounty,
-      // language:Meteor.user().language,
+      homecounty:Meteor.user().profile.homecounty,
+      language: Meteor.user().profile.language,
     });
     // Clear form
     target.text.value = '';
