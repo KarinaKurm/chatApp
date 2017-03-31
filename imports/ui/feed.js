@@ -46,7 +46,8 @@ Template.commentSubmit.events({
         text,
         createdAt: new Date(), // current time
         owner: Meteor.user(),
-        username:Meteor.user().emails[0].address,
+        // username:Meteor.user().emails[0].address,
+        username:Meteor.user().username,
         postId: this._id,
       });
       // Clear form

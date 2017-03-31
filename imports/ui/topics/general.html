@@ -1,6 +1,17 @@
 <Template name = "general">
 <h3> {{topicname}}</h3>
+<div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Filter by
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <li><button type="submit" class="btn btn-primary"> my country</button></li>
+    <li><a href="#">my language</a></li>
+  </ul>
+</div>
   {{>writePost}}
+
 
   {{#each posts}}
     {{> post}}

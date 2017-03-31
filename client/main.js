@@ -70,20 +70,23 @@ Template.register.events({
 
         var homecounty = $('[name=homecounty]').val();
         var language = $('[name=language]').val();
+
+        var university = $('[name=university]').val();
         Accounts.createUser({
           username: username,
-          email: email,
+          // email: email,
           password: password,
           profile: {
             homecounty: homecounty,
             language: language,
+            university: university,
             },
 
       }, function(error){
           if(error){
               console.log(error.reason); // Output error if registration fails
           } else {
-              Router.go("/profileSetUp"); // Redirect user if registration succeeds
+              Router.go("/"); // Redirect user if registration succeeds
           }
       });
           }
@@ -114,7 +117,7 @@ Template.profileSetUp.events({
         //     mycounty: homecounty,
         //     mylanguage: language,
         //   };
-        // 
+        //
         // console.log(homecounty);
         //  console.log(language);
         //  Router.go("/chatPage");
@@ -132,11 +135,12 @@ Template.navigation.events({
 Template.login.events({
     'submit form': function(event){
         event.preventDefault();
-        var email = $('[name=email]').val();
+        // var email = $('[name=email]').val();
+        var username = $('[name=username]').val();
         var password = $('[name=password]').val();
-        Meteor.loginWithPassword(email, password);
+        Meteor.loginWithPassword(username, password);
 
-          Meteor.loginWithPassword(email, password, function(error){
+          Meteor.loginWithPassword(username, password, function(error){
             if(error){
                 console.log(error.reason);
             } else {

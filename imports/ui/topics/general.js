@@ -17,11 +17,22 @@ import { Comments } from '/imports/lib/comments.js';
 Session.setDefault("topicname", "General");
 
 Template.general.helpers({
-  posts() {
-    // return Posts.find();
-    return Posts.find({topicname: Session.get("topicname")});
-    // return Posts.find({topic: "General"}, {sort: {ts: -1}});
-  },
+
+  // if( isPressed){
+  //
+  //   posts() {
+  //
+  //     return Posts.find({homecounty: Meteor.user().profile.homecounty});
+  //
+  //   },
+  // }else {
+    posts() {
+      // return Posts.find();
+      return Posts.find({topicname: Session.get("topicname")});
+      // return Posts.find({topic: "General"}, {sort: {ts: -1}});
+    },
+  // }
+
   topicname: function() {
      return Session.get("topicname");
    },
@@ -32,8 +43,12 @@ Template.general.helpers({
 });
 
 Template.general.events({
-
-})
+  'submit'(event) {
+      // Prevent default browser form submit
+      event.preventDefault();
+      var isPressed = true;
+    },
+});
 
 Template.writePost.events({
 
@@ -48,10 +63,11 @@ Template.writePost.events({
       text,
       createdAt: new Date(), // current time
       owner: Meteor.user(),
-      username:Meteor.user().emails[0].address,
+      username:Meteor.user().username,
       topicname: Session.get("topicname"),
       homecounty:Meteor.user().profile.homecounty,
       language: Meteor.user().profile.language,
+      university: Meteor.user().profile.university,
     });
     // Clear form
     target.text.value = '';
