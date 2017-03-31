@@ -10,6 +10,8 @@ import { OCADrooms } from '../imports/lib/rooms.js';
 import { Posts } from '../imports/lib/posts.js';
 import { OCADtopics } from '../imports/lib/topics.js';
 
+// import { Countries } from '../imports/lib/countries.js';
+
 import '../imports/ui/chat.html';
 import '../imports/ui/chat.css';
 
@@ -24,6 +26,10 @@ import '../imports/ui/feed.html';
 import '../imports/ui/feed.css';
 
 Session.setDefault("roomname", "Kazakhstan");
+
+
+
+
 
 Router.route('/register', function () {
   this.render('register');
@@ -79,11 +85,22 @@ Template.profileSetUp.events({
         var homecounty = $('[name=homecounty]').val();
         var language = $('[name=language]').val();
 
-        Meteor.users.update({_id: this.userId}, {
-          $set: {
-            "homecounty": homecounty,
-            "language": language,
-          }});
+        // Meteor.users.update({_id: this.userId}, {
+        //   $set: {
+        //     "homecounty": homecounty,
+        //     "language": language,
+        //   }});
+
+        // Countries.insert({
+        //   username:Meteor.user().emails[0].address,
+        //   homecounty:Meteor.user().homecounty,
+        //   // language:Meteor.user().language,
+        // });
+
+        // var userDetails = {
+        //     mycounty: homecounty,
+        //     mylanguage: language,
+        //   };
 
         console.log(homecounty);
          console.log(language);
