@@ -16,7 +16,7 @@ Session.setDefault("topicname", "General");
 Template.general.helpers({
   posts() {
     // return Posts.find();
-    return Posts.find({topicname: Session.get("topicname")}, {sort: {ts: -1}});
+    return Posts.find({topicname: Session.get("topicname")});
     // return Posts.find({topic: "General"}, {sort: {ts: -1}});
   },
   topicname: function() {
