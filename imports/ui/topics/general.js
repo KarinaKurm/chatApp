@@ -8,6 +8,8 @@ import '/client/main.js';
 
 import '../feed.js';
 
+import '../styles.css';
+
 import { Posts } from '/imports/lib/posts.js';
 import { OCADtopics } from '/imports/lib/topics.js';
 
@@ -40,7 +42,7 @@ Template.general.helpers({
 Template.mostLiked.helpers({
 
   posts:function() {
-    return Posts.find({topicname: Session.get("topicname")},{ sort: { Likes : -1 }, limit:2 });
+    return Posts.find({topicname: Session.get("topicname")},{ sort: { Likes : -1 }, limit:1 });
 
   },
 });

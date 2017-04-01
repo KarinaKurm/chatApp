@@ -17,9 +17,7 @@ Template.commentbox.helpers({
   comments: function() {
     return Comments.find({postId: this._id});
   },
-  commentsCount: function() {
-    return Comments.find({postId: this._id}).count();
-  },
+
 });
 
 // Template.comment.helpers({
@@ -27,6 +25,14 @@ Template.commentbox.helpers({
 //     return new Date(),
 //   }
 // });
+
+Template.post.helpers({
+  commentsCount: function() {
+    return Comments.find({postId: this._id}).count();
+  },
+});
+
+
 
 Template.post.events({
 
@@ -44,7 +50,9 @@ Template.post.events({
       },
       1000 ),
 
-    
+      'click .show-comments':function(){
+        $('.commentbox').toggle();
+      },
 
 });
 
@@ -64,10 +72,13 @@ Template.commentSubmit.events({
         // username:Meteor.user().emails[0].address,
         username:Meteor.user().username,
         postId: this._id,
+        homecounty:Meteor.user().profile.homecounty,
+        language: Meteor.user().profile.language,
+        university: Meteor.user().profile.university,
       });
       // Clear form
       target.text.value = '';
-      console.log(text);
+      // console.log(language);
       // console.log(userDetails.mycounty);
      // $('.panel-body').scrollTop($('.media-list').height())
    },

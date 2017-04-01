@@ -27,6 +27,8 @@ import '../imports/ui/topics/general.js';
 import '../imports/ui/feed.html';
 import '../imports/ui/feed.css';
 
+import '../imports/ui/styles.css';
+
 Session.setDefault("roomname", "Kazakhstan");
 
 
@@ -61,6 +63,9 @@ Router.configure({
     layoutTemplate: 'main'
 });
 
+
+
+
 Template.register.events({
     'submit form': function(event){
         event.preventDefault();
@@ -72,6 +77,7 @@ Template.register.events({
         var language = $('[name=language]').val();
 
         var university = $('[name=university]').val();
+
         Accounts.createUser({
           username: username,
           // email: email,

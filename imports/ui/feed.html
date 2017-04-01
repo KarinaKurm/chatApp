@@ -1,6 +1,6 @@
 <template name = "post">
 
-  <div class="row">
+  <!-- <div class="row">
     <div class="col-md-6 col-centered ">
       <div class="post-area">
       <div class="panel panel-default">
@@ -18,32 +18,70 @@
     </div>
 
   </div>
-  </div>
+  </div> -->
 
+  <div class="col-md-7 col-sm-8" style="margin-bottom:10px;margin-top:10px;">
+      <div class="panel panel-default">
+
+          <div class="panel-body post-body">
+              <div class="university-tag">
+                  <h5>{{university}} </h5></div>
+              <div class="post-heading"><img class="avatar pull-left" style="background-color:#4ac6fb;width:50px;height:50px;padding-right:0px;">
+                  <h4 class="text-left" id="post-username" style="min-width:none;max-width:none;width:auto;margin-right:0px;margin-left:10px;/*padding-bottom:0px;*/margin-top:10px;"> <span class="post-username">{{username}} </span>|<span class="post-username" style="font-size:14px;">{{createdAt}}</span></h4>
+                  <h4 class="text-left profile-details" style="min-width:none;max-width:none;width:auto;margin-right:0px;margin-left:10px;padding-bottom:0px;"> <span class="profile-details">From {{homecounty}}</span><span class="profile-details">Speaks {{language}}</span></h4></div>
+              <p style="margin-top:20px;margin-bottom:20px;"> {{text}}</p>
+              <div class="post-status">
+                <button type = "button" class="btn btn-link js-like-button" data-id="{{_id}}"><i class="glyphicon glyphicon-thumbs-up"></i></button>
+                <span class="stats">{{likes}} Likes(s)</span>
+                <span class="stats">{{commentsCount}} Comment(s)</span>
+                <span class="showcomments">
+                <button class="show-comments">Show comments</button>
+              </span>
+              </div>
+          </div>
+          {{> commentSubmit}}
+
+
+
+                <div class="commentbox">
+                {{>commentbox}}
+              </div>
+
+      </div>
+  </div>
 </template>
 
 
 
 <Template name = "commentbox">
-  {{commentsCount}}
-<ul>
+  <div class="panel-comments-container" style="padding:15px;">
+      <ul class="list-group comments-group">
+<li class="list-group-item comment-item">
+
   {{#each comments}}
       {{> comment}}
     {{/each}}
-  </ul>
-  {{> commentSubmit}}
 
+
+  </li>
+</ul>
+</div>
 </template>
 
 
 <template name="comment">
-  <li>
-    <h4>
-      <span class="author">{{username}}</span>
-      <span class="date">on {{createdAt}}</span>
-    </h4>
-    <p>{{text}}</p>
-  </li>
+
+
+              <div class="university-tag comments">
+                  <h6>{{university}} </h6>
+                </div>
+              <div class="post-heading"><img class="avatar pull-left" style="background-color:#4ac6fb;padding-right:0px;width:40px;height:40px;">
+                  <h5 class="text-left" id="post-username" style="min-width:none;max-width:none;width:auto;margin-right:0px;margin-left:10px;/*padding-bottom:0px;*/margin-top:10px;"> <span class="comments-username">{{username}} </span><span class="comments-username">{{createdAt}}</span></h5>
+                  <!-- <h4 class="text-left profile-details" style="min-width:none;max-width:none;width:auto;margin-right:0px;margin-left:10px;padding-bottom:0px;"> <span class="profile-details">{{homecountry}}</span><span class="profile-details">{{language}}</span></h4>-->
+                </div>
+              <p style="margin-top:12px;">{{text}}</p>
+
+
 </template>
 
 
@@ -62,9 +100,45 @@
     </div>
   </form> -->
 
-  <form class="new-comment">
+  <!-- <form class="new-comment">
     <textarea type="text" class="form-control" name="text" placeholder="What are you doing right now?" ></textarea>
     <button type="submit" class="btn btn-primary"><i class="fa fa-share"></i> Share</button>
-  </form>
+  </form> -->
+
+  <div class="panel-post-footer" style="padding:15px;">
+      <div class="input-group">
+          <div class="status-upload">
+        <form class="new-comment">
+
+          <!-- <input type="text" class="form-control" style="color:rgb(51,51,51);"> -->
+          <input type="text" class="form-control" name="text" placeholder="What are you doing right now?" style="color:rgb(51,51,51);" >
+
+          <ul>
+            <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><i class="fa fa-music"></i></a></li>
+            <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Video"><i class="fa fa-video-camera"></i></a></li>
+            <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Sound Record"><i class="fa fa-microphone"></i></a></li>
+            <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="fa fa-picture-o"></i></a></li>
+          </ul>
+
+            <button class="btn btn-link active new-post" type="submit" style="color:#796dff;font-size:17px;"><i class="fa fa-share"></i>Share </button>
+
+        </form>
+        </div>
+      </div>
+  </div>
+
+  <!-- <div class="status-upload">
+          <form class="new-post">
+              <textarea class="form-control new-post" name = "text" placeholder="What are you doing right now?" style="width:211;min-width:278px;max-width:618px;"></textarea>
+              <ul>
+                <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><i class="fa fa-music"></i></a></li>
+                <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Video"><i class="fa fa-video-camera"></i></a></li>
+                <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Sound Record"><i class="fa fa-microphone"></i></a></li>
+                <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="fa fa-picture-o"></i></a></li>
+              </ul>
+                <button class="btn btn-link active new-post" type="submit" style="color:#796dff;">Share</button>
+          </form>
+
+  </div> -->
 
 </template>

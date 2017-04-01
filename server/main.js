@@ -29,8 +29,9 @@ Meteor.startup(() => {
         });
       }
 
-      OCADtopics.remove({});
+      // OCADtopics.remove({});
       // Posts.remove({});
+      //   Comments.remove({});
 
 
          if (OCADtopics.find().count() === 0) {
