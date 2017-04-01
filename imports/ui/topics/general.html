@@ -1,7 +1,8 @@
 <Template name = "general">
+
 <h3> {{topicname}}</h3>
 <div class="dropdown">
-  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+  <button class="filterbyCountry" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
     Filter by
     <span class="caret"></span>
   </button>
@@ -10,6 +11,9 @@
     <li><a href="#">my language</a></li>
   </ul>
 </div>
+
+{{>mostLiked}}
+
   {{>writePost}}
 
 
@@ -17,6 +21,23 @@
     {{> post}}
   {{/each}}
 
+</Template>
+
+<Template name = "mostLiked">
+  <div class="row">
+    <div class="col-md-6 col-centered">
+  <div class="panel panel-default">
+      <div class="panel-heading">
+          <h4> Most Liked </h4>
+      </div>
+      <div class="panel-body">
+        {{#each posts}}
+          {{> post}}
+        {{/each}}
+         </div>
+    </div>
+  </div>
+</div>
 </Template>
 
 <template name = "writePost">

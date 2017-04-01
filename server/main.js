@@ -30,6 +30,7 @@ Meteor.startup(() => {
       }
 
       OCADtopics.remove({});
+      // Posts.remove({});
 
 
          if (OCADtopics.find().count() === 0) {

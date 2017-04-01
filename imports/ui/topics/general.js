@@ -18,35 +18,50 @@ Session.setDefault("topicname", "General");
 
 Template.general.helpers({
 
-  // if( isPressed){
-  //
-  //   posts() {
-  //
-  //     return Posts.find({homecounty: Meteor.user().profile.homecounty});
-  //
-  //   },
-  // }else {
+
+
     posts() {
-      // return Posts.find();
-      return Posts.find({topicname: Session.get("topicname")});
-      // return Posts.find({topic: "General"}, {sort: {ts: -1}});
+
+    var isPressed = true;
+
+      if( isPressed){
+        return Posts.find({topicname: Session.get("topicname")},{sort:{createdAt:-1}});
+      }else {
+          return Posts.find({topicname: Session.get("topicname")},{sort:{createdAt: -1}});
+        }
     },
-  // }
+
 
   topicname: function() {
      return Session.get("topicname");
    },
-  //  homecounty:function () {
-  //    return Meteor.user().profile.homecounty;
-   //
-  //  }
+});
+
+Template.mostLiked.helpers({
+
+  posts:function() {
+    return Posts.find({topicname: Session.get("topicname")},{ sort: { Likes : -1 }, limit:2 });
+
+  },
+});
+
+Template.mostLiked.events({
+
 });
 
 Template.general.events({
-  'submit'(event) {
-      // Prevent default browser form submit
+    'click .filterbyCountry': function(event){
       event.preventDefault();
-      var isPressed = true;
+      if (isPressed){
+        var isPressed = false;
+        console.log(isPressed);
+      }else {
+        var isPressed = true;
+        console.log(isPressed);
+      }
+
+
+
     },
 });
 
@@ -68,10 +83,13 @@ Template.writePost.events({
       homecounty:Meteor.user().profile.homecounty,
       language: Meteor.user().profile.language,
       university: Meteor.user().profile.university,
+
+      // postId: this._id,
+
     });
     // Clear form
     target.text.value = '';
-    console.log(Meteor.user().emails[0].address);
+    console.log(Meteor.user().username);
     // console.log(userDetails.mycounty);
    // $('.panel-body').scrollTop($('.media-list').height())
  },

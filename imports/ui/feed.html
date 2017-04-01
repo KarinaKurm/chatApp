@@ -11,6 +11,8 @@
                {{text}}
 
         </div>
+        <button type="button" class="js-like-button" data-id="{{_id}}"></button>
+        <img src="likes.png"><sup>{{likes}}</sup>
         {{>commentbox}}
       </div>
     </div>
@@ -21,7 +23,9 @@
 </template>
 
 
+
 <Template name = "commentbox">
+  {{commentsCount}}
 <ul>
   {{#each comments}}
       {{> comment}}

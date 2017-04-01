@@ -16,7 +16,10 @@ import { Comments } from '../lib/comments.js';
 Template.commentbox.helpers({
   comments: function() {
     return Comments.find({postId: this._id});
-  }
+  },
+  commentsCount: function() {
+    return Comments.find({postId: this._id}).count();
+  },
 });
 
 // Template.comment.helpers({
@@ -25,12 +28,24 @@ Template.commentbox.helpers({
 //   }
 // });
 
-Template.post.helpers({
+Template.post.events({
 
-  // homecounty:function () {
-  //   return Meteor.user().profile.homecounty;
-  //
-  // }
+  'click .js-like-button': _.throttle( function( e, t ) {
+        e.preventDefault();
+        var id = $(e.currentTarget).data( 'id' );
+      //get this posts array of likers
+      var res = Posts.find( { _id: id}, { likers: 1}).fetch()[0].likers;
+      //see if the current user is one of them
+      var q = _.find(res, (x) => x == Meteor.userId() );
+      //need to disallow same user that liked to like again
+      if ( q == Meteor.userId() ) return;
+      //otherwise, allow like and save it
+      Posts.update( { _id: id },  { $inc: { likes: 1 } ,  $push: { likers:  Meteor.userId() } });
+      },
+      1000 ),
+
+    
+
 });
 
 Template.commentSubmit.events({
