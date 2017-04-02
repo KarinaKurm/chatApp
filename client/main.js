@@ -7,12 +7,33 @@ import '../imports/ui/message.html';
 import { Messages } from '../imports/lib/messages.js';
 import { OCADrooms } from '../imports/lib/rooms.js';
 
+import { Posts } from '../imports/lib/posts.js';
+import { OCADtopics } from '../imports/lib/topics.js';
 
+import { Comments } from '../imports/lib/comments.js';
+
+// import { Countries } from '../imports/lib/countries.js';
 
 import '../imports/ui/chat.html';
 import '../imports/ui/chat.css';
 
+import '../imports/ui/topics/topicspage.html';
+import '../imports/ui/topics/topicspage.css';
+import '../imports/ui/topics/topicspage.js';
+
+import '../imports/ui/topics/general.html';
+import '../imports/ui/topics/general.js';
+
+import '../imports/ui/feed.html';
+import '../imports/ui/feed.css';
+
+import '../imports/ui/styles.css';
+
 Session.setDefault("roomname", "Kazakhstan");
+
+
+
+
 
 Router.route('/register', function () {
   this.render('register');
@@ -25,8 +46,12 @@ Router.route('/chatPage', function () {
 });
 
 Router.route('/', function () {
-	name: 'register',
-  this.render('register');
+	name: 'topicspage',
+  this.render('topicspage');
+});
+
+Router.route('/general', function () {
+  this.render('general');
 });
 
 
@@ -38,26 +63,73 @@ Router.configure({
     layoutTemplate: 'main'
 });
 
+
+
+
 Template.register.events({
     'submit form': function(event){
         event.preventDefault();
         var username = $('[name=username]').val();
         var email = $('[name=email]').val();
         var password = $('[name=password]').val();
+
+        var homecounty = $('[name=homecounty]').val();
+        var language = $('[name=language]').val();
+
+        var university = $('[name=university]').val();
+
         Accounts.createUser({
           username: username,
-          email: email,
-          password: password
+          // email: email,
+          password: password,
+          profile: {
+            homecounty: homecounty,
+            language: language,
+            university: university,
+            },
+
       }, function(error){
           if(error){
               console.log(error.reason); // Output error if registration fails
           } else {
-              Router.go("/profileSetUp"); // Redirect user if registration succeeds
+              Router.go("/"); // Redirect user if registration succeeds
           }
       });
           }
 });
 
+Template.profileSetUp.events({
+    // 'submit form': function(event){
+    //     event.preventDefault();
+    //     var homecounty = $('[name=homecounty]').val();
+    //     var language = $('[name=language]').val();
+
+        // Meteor.users.update({_id: this.userId}, {
+        //   $set: {
+        //     profile: {
+        //       homecounty: homecounty,
+        //       language: language,
+        //       },
+        //
+        //   }});
+
+        // Countries.insert({
+        //   username:Meteor.user().emails[0].address,
+        //   homecounty:Meteor.user().homecounty,
+        //   // language:Meteor.user().language,
+        // });
+
+        // var userDetails = {
+        //     mycounty: homecounty,
+        //     mylanguage: language,
+        //   };
+        //
+        // console.log(homecounty);
+        //  console.log(language);
+        //  Router.go("/chatPage");
+        // }
+
+});
 Template.navigation.events({
     'click .logout': function(event){
         event.preventDefault();
@@ -69,11 +141,12 @@ Template.navigation.events({
 Template.login.events({
     'submit form': function(event){
         event.preventDefault();
-        var email = $('[name=email]').val();
+        // var email = $('[name=email]').val();
+        var username = $('[name=username]').val();
         var password = $('[name=password]').val();
-        Meteor.loginWithPassword(email, password);
+        Meteor.loginWithPassword(username, password);
 
-          Meteor.loginWithPassword(email, password, function(error){
+          Meteor.loginWithPassword(username, password, function(error){
             if(error){
                 console.log(error.reason);
             } else {
@@ -84,18 +157,7 @@ Template.login.events({
 
 });
 
-Template.profileSetUp.events({
-    'submit form': function(event){
-        event.preventDefault();
-        var homecounty = $('[name=homecounty]').val();
-        var language = $('[name=language]').val();
 
-        console.log(homecounty);
-         console.log(language);
-         Router.go("/chatPage");
-        }
-
-});
 
  Template.chat.helpers({
    messages() {

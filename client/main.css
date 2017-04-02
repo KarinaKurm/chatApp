@@ -1,12 +1,29 @@
 
  /*@import url(https://fonts.googleapis.com/css?family=Roboto:300);*/
+.navbar-default{
+  background-color: #4ac6fb;
+  border: 0px;
+  color: #ffffff;
+}
+.navbar-default .navbar-brand {
+  color: #ffffff;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #ffffff;
+}
+.row{
+  margin-right: 0px;
+  margin-left: 0px;
+  margin-bottom : 0px;
+}
+
 body{
-  background-color: #ffffff;
+  background-color: #f5f8fa;
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.panel-body{
+.panel-body.chat{
    overflow-y:scroll;
    height:60vh;
  }/* CSS declarations go here */
@@ -34,6 +51,7 @@ body{
  }
 .panel-info{
   border: 0px;
+  background-color: #F4F5F7;
 }
 
  .signin-page {

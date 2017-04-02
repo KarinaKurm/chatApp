@@ -1,7 +1,8 @@
 <head>
   <title>My Simple Chat</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
+     <link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css">
+     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -19,9 +20,7 @@
     <p>Copyright &copy; Karina Kurmanbayeva, 2017.</p> -->
 </template>
 
-<template name="home">
-  <h1>This is the home page</h1>
-</template>
+
 
 <template name="chatPage">
   <!-- <h1>This is the home page</h1> -->
@@ -32,23 +31,7 @@
 {{/if}}
 </template>
 
-<template name= "profileSetUp">
 
-        <div class="signin-body">
-          <div class="signin-page">
-
-          <div class="signin-form">
-            <h3>Lets set up your profile</h3>
-            <form class="login-form">
-              <input type="homecounty" name="homecounty" placeholder="homecounty"/>
-              <input type="language" name="language" placeholder="language"/>
-              <button type="submit" value="Login">Save</button>
-              <p class="message-signin"> Want to do it later? <a href="{{pathFor route='chatPage'}}">Skip</a></p>
-            </form>
-          </div>
-        </div>
-      </div>
-</template>
 
 <template name="navigation">
 
@@ -67,12 +50,6 @@
 
                       <li class="page-scroll">
                         <a href="/">Home</a>
-                      </li>
-                      <li class="page-scroll">
-                          <a href="#about">About</a>
-                      </li>
-                      <li class="page-scroll">
-                          <a href="#contact">Contact</a>
                       </li>
 
                       {{#if currentUser}}
@@ -108,7 +85,8 @@
       <div class="signin-form">
           <h3>Login</h3>
         <form class="login-form">
-          <input type="email" name="email" placeholder="email"/>
+          <!-- <input type="email" name="email" placeholder="email"/> -->
+          <input type="username" name="username" placeholder="username"/>
           <input type="password" name="password" placeholder="password"/>
           <button type="submit" value="Login" >login</button>
           <p class="message-signin">Already registered? <a href="{{pathFor route='register'}}">Create an account</a></p>
@@ -128,12 +106,35 @@
               <input type="username" name="username" placeholder="username"/>
               <input type="email" name="email" placeholder="email"/>
               <input type="password" name="password" placeholder="password"/>
+
+              <input type="homecounty" name="homecounty" placeholder="homecounty"/>
+              <input type="language" name="language" placeholder="language"/>
+              <input type="university" name="university" placeholder="university"/>
+
               <button type="submit" value="Register" >Create</button>
               <p class="message-signin">Already registered? <a href="{{pathFor route='login'}}">Login</a></p>
             </form>
           </div>
         </div>
         </div>
+</template>
+
+<template name= "profileSetUp">
+
+        <div class="signin-body">
+          <div class="signin-page">
+
+          <div class="signin-form">
+            <h3>Lets set up your profile</h3>
+            <form class="profileSetUp-form-form">
+              <input type="homecounty" name="homecounty" placeholder="homecounty"/>
+              <input type="language" name="language" placeholder="language"/>
+              <button type="submit" value="profileSetUp-form">Save</button>
+              <p class="message-signin"> Want to do it later? <a href="{{pathFor route='chatPage'}}">Skip</a></p>
+            </form>
+          </div>
+        </div>
+      </div>
 </template>
 
 
