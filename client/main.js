@@ -24,6 +24,22 @@ import '../imports/ui/topics/topicspage.js';
 import '../imports/ui/topics/general.html';
 import '../imports/ui/topics/general.js';
 
+import '../imports/ui/topics/housing.html';
+import '../imports/ui/topics/housing.js';
+
+import '../imports/ui/topics/food.html';
+import '../imports/ui/topics/food.js';
+
+import '../imports/ui/topics/immigration.html';
+import '../imports/ui/topics/immigration.js';
+
+import '../imports/ui/topics/school.html';
+import '../imports/ui/topics/school.js';
+//
+import '../imports/ui/topics/studentlife.html';
+import '../imports/ui/topics/studentlife.js';
+
+
 import '../imports/ui/feed.html';
 import '../imports/ui/feed.css';
 
@@ -54,6 +70,25 @@ Router.route('/general', function () {
   this.render('general');
 });
 
+Router.route('/housing', function () {
+  this.render('housing');
+});
+
+Router.route('/food', function () {
+  this.render('food');
+});
+
+Router.route('/immigration', function () {
+  this.render('immigration');
+});
+
+Router.route('/school', function () {
+  this.render('school');
+});
+//
+Router.route('/studentlife', function () {
+  this.render('studentlife');
+});
 
 Router.route('/profileSetUp', function () {
   this.render('profileSetUp');

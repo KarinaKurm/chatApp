@@ -16,25 +16,21 @@ import { OCADtopics } from '/imports/lib/topics.js';
 import { Comments } from '/imports/lib/comments.js';
 
 
-Session.setDefault("topicname", "General");
+Session.setDefault("topicname", "Food");
 
-Template.general.helpers({
-
-
+Template.food.helpers({
 
     posts() {
-
-        return Posts.find({topicname: Session.get("topicname")},{sort:{createdAt:-1}});
-
+        return Posts.find({topicname: "Food"},{sort:{createdAt:-1}});
       },
 
   topicname: function() {
-     return Session.get("topicname");
+    //  return Session.get("topicname");
+    // return OCADtopics.find.fetch({topicname:"Housing"},);
    },
 });
 
-
-Template.general.events({
+Template.food.events({
     'click .filterbyCountry': function(event){
       event.preventDefault();
       if (isPressed){

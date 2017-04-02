@@ -11,8 +11,10 @@
     <li><a href="#">my language</a></li>
   </ul>
 </div> -->
+
 <div  class="container">
   <div class="row">
+    <h3> {{topicname}}</h3>
     {{>writePost}}
     {{>mostLiked}}
   </div>
@@ -30,66 +32,4 @@
 
 </div>
 
-
-
 </Template>
-
-<Template name = "mostLiked">
-  <div class="col-lg-4 col-md-5 col-sm-4 hidden-xs">
-      <div class="panel panel-default">
-          <div class="panel-heading">
-              <h3 class="panel-title">Top posts </h3></div>
-          <div class="panel-body">
-            <!-- {{#each posts}}
-              {{> post}}
-            {{/each}} -->
-          </div>
-      </div>
-  </div>
-
-</Template>
-
-<template name = "writePost">
-
-      <div class="col-md-7 col-sm-8">
-
-          <div class="status-upload">
-                  <form class="new-post">
-                      <textarea class="form-control new-post" name = "text" placeholder="What are you doing right now?" style="width:211;min-width:278px;max-width:618px;"></textarea>
-                      <ul>
-  											<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><i class="fa fa-music"></i></a></li>
-  											<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Video"><i class="fa fa-video-camera"></i></a></li>
-  											<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Sound Record"><i class="fa fa-microphone"></i></a></li>
-  											<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="fa fa-picture-o"></i></a></li>
-  										</ul>
-                        <button class="btn btn-link active new-post" type="submit" style="color:#796dff;">Share</button>
-                  </form>
-
-
-
-
-          </div>
-      </div>
-
-
-  <!-- <div class="row">
-    <div class="col-md-6 col-centered">
-    						<div class="widget-area no-padding blank">
-								<div class="status-upload">
-									<form class="new-post">
-										<textarea type="text" class="form-control" name="text" placeholder="What are you doing right now?" ></textarea>
-
-										<ul>
-											<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><i class="fa fa-music"></i></a></li>
-											<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Video"><i class="fa fa-video-camera"></i></a></li>
-											<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Sound Record"><i class="fa fa-microphone"></i></a></li>
-											<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="fa fa-picture-o"></i></a></li>
-										</ul>
-										<button type="submit" class="btn btn-primary"><i class="fa fa-share"></i> Share</button>
-									</form>
-								</div>
-							</div>
-						</div>
-
-    </div> -->
-</template>

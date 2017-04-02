@@ -29,13 +29,13 @@ Meteor.startup(() => {
         });
       }
 
-      // OCADtopics.remove({});
+    OCADtopics.remove({});
       // Posts.remove({});
       //   Comments.remove({});
 
 
          if (OCADtopics.find().count() === 0) {
-           ["General","Housing", "Food", "Immigration", "StudentLife"].forEach(function(r) {
+           ["General","Housing", "Food", "Immigration", "School","StudentLife"].forEach(function(r) {
              OCADtopics.insert({topicname: r});
            });
          }

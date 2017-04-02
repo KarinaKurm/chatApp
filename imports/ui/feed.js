@@ -56,6 +56,66 @@ Template.post.events({
 
 });
 
+Template.writePost.events({
+
+'submit .new-post'(event) {
+    // Prevent default browser form submit
+    event.preventDefault();
+    // Get value from form element
+    const target = event.target;
+    const text = target.text.value;
+    // Insert a message into the collection
+    Posts.insert({
+      text,
+      createdAt: new Date(), // current time
+      owner: Meteor.user(),
+      username:Meteor.user().username,
+      topicname: Session.get("topicname"),
+      homecounty:Meteor.user().profile.homecounty,
+      language: Meteor.user().profile.language,
+      university: Meteor.user().profile.university,
+
+      // postId: this._id,
+
+    });
+    // Clear form
+    target.text.value = '';
+    console.log(Meteor.user().username);
+    // console.log(userDetails.mycounty);
+   // $('.panel-body').scrollTop($('.media-list').height())
+ },
+
+
+
+});
+
+Template.writePost.helpers({
+    'topic': function(){
+        return OCADtopics.find({}, {sort: {createdAt: -1}});
+    },
+
+    // comments: function() {
+    // return Comments.find({postId: this._id});
+    // }
+
+    // ----comment----
+
+});
+
+Template.mostLiked.helpers({
+
+  posts:function() {
+    return Posts.find({topicname: Session.get("topicname")},{ sort: { Likes : -1 }, limit:1 });
+
+  },
+});
+
+Template.mostLiked.events({
+
+});
+
+
+
 Template.commentSubmit.events({
 
   'submit .new-comment'(event) {

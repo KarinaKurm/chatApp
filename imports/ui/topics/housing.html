@@ -1,0 +1,23 @@
+<Template name = "housing">
+
+<div  class="container">
+  <div class="row">
+    <h3> Housing</h3>
+    {{>writePost}}
+    {{>mostLiked}}
+  </div>
+
+
+<div class="row" style="margin-top:5px;">
+    <div class="col-md-12">
+        <h4>Most Recent in Housing</h4>
+        {{#each posts}}
+          {{> post}}
+        {{/each}}
+      </div>
+
+</div>
+
+</div>
+
+</Template>
