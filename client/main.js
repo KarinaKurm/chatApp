@@ -44,6 +44,7 @@ import '../imports/ui/feed.html';
 import '../imports/ui/feed.css';
 
 import '../imports/ui/styles.css';
+import '../imports/ui/Header-Dark.css';
 
 Session.setDefault("roomname", "Kazakhstan");
 
@@ -57,8 +58,8 @@ Router.route('/register', function () {
 Router.route('/login', function () {
   this.render('login');
 });
-Router.route('/chatPage', function () {
-  this.render('chatPage');
+Router.route('/chat', function () {
+  this.render('chat');
 });
 
 Router.route('/', function () {
@@ -99,7 +100,13 @@ Router.configure({
 });
 
 
-
+Template.main.events({
+  'click .logout': function(event){
+      event.preventDefault();
+      Meteor.logout();
+      Router.go('login');
+  },
+});
 
 Template.register.events({
     'submit form': function(event){
@@ -185,7 +192,7 @@ Template.login.events({
             if(error){
                 console.log(error.reason);
             } else {
-                Router.go("/chatPage");
+                Router.go("/");
             }
       });
         }

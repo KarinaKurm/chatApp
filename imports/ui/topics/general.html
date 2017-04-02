@@ -12,24 +12,25 @@
   </ul>
 </div> -->
 
-<div  class="container">
-  <div class="row">
-    <h3> {{topicname}}</h3>
-    {{>writePost}}
-    {{>mostLiked}}
-  </div>
+<div class="container hero">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+          <h1 class="text-center" style="margin-bottom:0px;font-family:roboto;">#{{topicname}} </h1>
+          <h3 class="text-center" style="margin-bottom:52px;color:rgb(255,241,241);font-size:18px;font-family:roboto;">A place to talk and share your stories</h3>
 
+          {{>writePost}}
+        <div class="row" style="margin-top:5px;">
+            <div class="col-md-12">
+                <h4>Most Recent in {{topicname}}</h4>
+                {{#each posts}}
+                  {{> post}}
+                {{/each}}
+              </div>
 
-<div class="row" style="margin-top:5px;">
-    <div class="col-md-12">
-        <h4>Most Recent in {{topicname}}</h4>
-        {{#each posts}}
-          {{> post}}
-        {{/each}}
+        </div>
+
       </div>
-
-</div>
-
-</div>
+    </div>
+  </div>
 
 </Template>

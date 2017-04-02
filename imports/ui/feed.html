@@ -1,26 +1,6 @@
 <template name = "post">
 
-  <!-- <div class="row">
-    <div class="col-md-6 col-centered ">
-      <div class="post-area">
-      <div class="panel panel-default">
-          <div class="panel-heading">
-              <small class="text-muted"><strong>{{username}}</strong> | {{createdAt}} |  {{topicname}} |{{homecounty}} | {{language}} | {{university}}</small>
-          </div>
-          <div class="panel-body post">
-               {{text}}
-
-        </div>
-        <button type="button" class="js-like-button" data-id="{{_id}}"></button>
-        <img src="likes.png"><sup>{{likes}}</sup>
-        {{>commentbox}}
-      </div>
-    </div>
-
-  </div>
-  </div> -->
-
-  <div class="col-md-7 col-sm-8" style="margin-bottom:10px;margin-top:10px;">
+  <div class="col-md-12 col-md-offset-0 col-sm-10 col-sm-offset-1" style="margin-bottom:10px;margin-top:10px;">
       <div class="panel panel-default">
 
           <div class="panel-body post-body">
@@ -35,7 +15,7 @@
                 <span class="stats">{{likes}} Likes(s)</span>
                 <span class="stats">{{commentsCount}} Comment(s)</span>
                 <span class="showcomments">
-                <button class="show-comments">Show comments</button>
+                <button class="btn btn-link active show-comments" style="color:#796dff;">Show comments</button>
               </span>
               </div>
           </div>
@@ -49,11 +29,14 @@
 
       </div>
   </div>
+
 </template>
 
 <template name = "writePost">
 
-      <div class="col-md-7 col-sm-8">
+
+        <div class="row">
+          <div  class="col-md-12 col-md-offset-0 col-sm-10 col-sm-offset-1">
 
           <div class="status-upload">
                   <form class="new-post">
@@ -66,12 +49,9 @@
   										</ul>
                         <button class="btn btn-link active new-post" type="submit" style="color:#796dff;">Share</button>
                   </form>
-
-
-
-
           </div>
       </div>
+    </div>
   </Template>
 
 <Template name = "commentbox">

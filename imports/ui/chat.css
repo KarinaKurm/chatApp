@@ -1,5 +1,5 @@
 .chat_window {
-  position: absolute;
+  /*position: absolute;*/
   width: calc(100% - 150px);
   max-width: 800px;
   height: 500px;
@@ -7,7 +7,7 @@
   background-color: #fff;
   /*left: 50%;
     top: 50%;*/
-  transform: translateX(0%) translateY(10%);
+  /*transform: translateX(0%) translateY(10%);*/
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
   background-color: #F4F5F7;
   /*overflow: hidden;*/

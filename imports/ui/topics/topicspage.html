@@ -2,39 +2,103 @@
   <div class="features-boxed">
       <div class="container">
           <div class="intro">
-              <h2 class="text-center">Features </h2>
-              <p class="text-center welcome-text">Nunc luctus in metus eget fringilla. Aliquam sed justo ligula. Vestibulum nibh erat, pellentesque ut laoreet vitae.</p>
+              <h1 class="text-center">Welcome! </h1>
+              <!-- <h2 class="text-center welcome-text">If you are an iternational student, this is a place where you can ask questions and share your experience as an international student!</p> -->
+              <h2 class="text-center">If you are an iternational student, this is a place where you can ask questions and share your experience as an international student!</h2>
+              <h3 class="text-center"> Choose a topic and start sharing! </h3>
           </div>
-          <div class="row features">
+          <div class="row features" style="margin-right: 100px;margin-left: 100px;">
               <div class="col-md-4 col-sm-6 item">
                   <div class="box">
-                      <h3 class="name">General </h3>
-                      <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p><a href="/general" class="learn-more">Learn more »</a></div>
+                    {{#if currentUser}}
+                    <a href="/general" class="learn-more">
+                      <h3 class="name">#General </h3>
+
+                    </a>
+                     {{else}}
+
+                       <h3 class="name">#General </h3>
+
+
+                     {{/if}}
+                      <!-- <h3 class="name">#General </h3>
+                      <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p><a href="/general" class="learn-more">Learn more »</a> -->
+                    </div>
               </div>
               <div class="col-md-4 col-sm-6 item">
                   <div class="box">
-                      <h3 class="name">Housing </h3>
-                      <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p><a href="/housing" class="learn-more">Learn more »</a></div>
+                    {{#if currentUser}}
+                    <a href="/housing" class="learn-more">
+                      <h3 class="name">#Housing</h3>
+
+                    </a>
+                     {{else}}
+
+                       <h3 class="name">#Housing </h3>
+
+
+                     {{/if}}
               </div>
+            </div>
               <div class="col-md-4 col-sm-6 item">
                   <div class="box">
-                      <h3 class="name">Food </h3>
-                      <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p><a href="/food" class="learn-more">Learn more »</a></div>
+                    {{#if currentUser}}
+                    <a href="/Food" class="learn-more">
+                      <h3 class="name">#Food </h3>
+
+                    </a>
+                     {{else}}
+
+                       <h3 class="name">#Food </h3>
+
+
+                     {{/if}}
               </div>
+            </div>
               <div class="col-md-4 col-sm-6 item">
                   <div class="box">
-                      <h3 class="name">Immigration </h3>
-                      <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p><a href="/immigration" class="learn-more">Learn more »</a></div>
+                    {{#if currentUser}}
+                    <a href="/immigration" class="learn-more">
+                      <h3 class="name">#Immigration </h3>
+
+                    </a>
+                     {{else}}
+
+                       <h3 class="name">#immigration </h3>
+
+
+                     {{/if}}
+                   </div>
+                 </div>
+              <div class="col-md-4 col-sm-6 item">
+                <div class="box">
+                  {{#if currentUser}}
+                  <a href="/school" class="learn-more">
+                    <h3 class="name">#School</h3>
+
+                  </a>
+                   {{else}}
+
+                     <h3 class="name">#School </h3>
+
+
+                   {{/if}}
+            </div>
               </div>
               <div class="col-md-4 col-sm-6 item">
-                  <div class="box">
-                      <h3 class="name">School </h3>
-                      <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p><a href="/school" class="learn-more">Learn more »</a></div>
-              </div>
-              <div class="col-md-4 col-sm-6 item">
-                  <div class="box">
-                      <h3 class="name">Student Life</h3>
-                      <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p><a href="/studentlife" class="learn-more">Learn more »</a></div>
+                <div class="box">
+                  {{#if currentUser}}
+                  <a href="/studentlife" class="learn-more">
+                    <h3 class="name">#Student life</h3>
+
+                  </a>
+                   {{else}}
+
+                     <h3 class="name">#Student life </h3>
+
+
+                   {{/if}}
+                 </div>
               </div>
           </div>
       </div>

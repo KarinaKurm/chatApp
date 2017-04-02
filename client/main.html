@@ -3,6 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
      <link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css">
      <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+     <link rel="stylesheet" href="../imports/ui/Header-Dark.css">
 </head>
 
 <body>
@@ -12,24 +13,57 @@
 
 <template name="main">
     <!-- <h1>Int'l Student App</h1> -->
-    {{> navigation}}
+    <!-- {{> navigation}} -->
 
-     {{> yield}}
+    <body>
+        <div>
+            <div class="header-dark img" style="background-image:url(&quot;../images/tim-gouw-102425.jpg&quot;);">
+                <nav class="navbar navbar-default navigation-clean-search">
+                    <div class="container">
+                        <div class="navbar-header"><a class="navbar-brand navbar-link" href="#">Company Name</a>
+                            <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                        </div>
+                        <div class="collapse navbar-collapse" id="navcol-1">
+                            <p class="navbar-text navbar-right">
+
+
+                              {{#if currentUser}}
+                              <a class="navbar-link login" href="/">Home</a>
+                            <a class="navbar-link login" href="{{pathFor route='chat'}}">Chat</a>
+                            <a class="btn btn-default action-button logout" role="button" href="#">Logout</a>
+                               {{else}}
+                               <a class="navbar-link login" href="{{pathFor route='login'}}">Login</a>
+                               <a class="btn btn-default action-button" role="button" href="{{pathFor route='register'}}">Register</a>
+                            {{/if}}
+
+
+
+
+                             </p>
+                        </div>
+
+                    </div>
+                </nav>
+                {{> yield}}
+            </div>
+        </div>
+
+</body>
 
     <!-- <hr />
     <p>Copyright &copy; Karina Kurmanbayeva, 2017.</p> -->
 </template>
 
 
-
+<!--
 <template name="chatPage">
-  <!-- <h1>This is the home page</h1> -->
+
   {{#if currentUser}}
   {{> chat}}
    {{else}}
    <h1>You have no permition</h1>
 {{/if}}
-</template>
+</template> -->
 
 
 
@@ -79,7 +113,7 @@
 
 <template name="login">
 
-    <div class="signin-body">
+    <!-- <div class="signin-body"> -->
       <div class="signin-page">
 
       <div class="signin-form">
@@ -93,18 +127,18 @@
         </form>
       </div>
     </div>
-  </div>
+  <!-- </div>  -->
 </template>
 
 <template name="register">
-        <div class="signin-body">
+
           <div class="signin-page">
 
           <div class="signin-form">
               <h3>Register</h3>
             <form class="register-form">
               <input type="username" name="username" placeholder="username"/>
-              <input type="email" name="email" placeholder="email"/>
+              <!-- <input type="email" name="email" placeholder="email"/> -->
               <input type="password" name="password" placeholder="password"/>
 
               <input type="homecounty" name="homecounty" placeholder="homecounty"/>
@@ -116,7 +150,7 @@
             </form>
           </div>
         </div>
-        </div>
+
 </template>
 
 <template name= "profileSetUp">
