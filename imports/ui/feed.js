@@ -50,8 +50,9 @@ Template.post.events({
       },
       1000 ),
 
-      'click .show-comments':function(){
+      'click .show-comments':function (){
         $('.commentbox').toggle();
+
       },
 
 });

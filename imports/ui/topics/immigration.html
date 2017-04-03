@@ -6,7 +6,7 @@
             <h1 class="text-center" style="margin-bottom:0px;font-family:roboto;">#Immigration </h1>
             <h3 class="text-center" style="margin-bottom:52px;color:rgb(255,241,241);font-size:18px;font-family:roboto;">A place to talk and share your stories</h3>
 
-            {{>writePost}}
+            {{>writePostImmigration}}
           <div class="row" style="margin-top:5px;">
               <div class="col-md-12">
                   <h4>Most Recent in #Immigration</h4>
@@ -22,3 +22,25 @@
     </div>
 
 </Template>
+
+<template name = "writePostImmigration">
+
+
+        <div class="row">
+          <div  class="col-md-12 col-md-offset-0 col-sm-10 col-sm-offset-1">
+
+          <div class="status-upload">
+                  <form class="new-post">
+                      <textarea class="form-control new-post" name = "text" placeholder="What are you doing right now?" style="width:211;min-width:278px;max-width:618px;"></textarea>
+                      <ul>
+  											<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><i class="fa fa-music"></i></a></li>
+  											<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Video"><i class="fa fa-video-camera"></i></a></li>
+  											<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Sound Record"><i class="fa fa-microphone"></i></a></li>
+  											<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="fa fa-picture-o"></i></a></li>
+  										</ul>
+                        <button class="btn btn-link active new-post" type="submit" style="color:#796dff;">Share</button>
+                  </form>
+          </div>
+      </div>
+    </div>
+  </Template>
